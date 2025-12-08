@@ -6,4 +6,5 @@ from frappe.model.document import Document
 
 
 class GymClassBooking(Document):
+    #testing the git push
 	pass
