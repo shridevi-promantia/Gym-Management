@@ -8,40 +8,22 @@
  "field_order": [
   "member",
   "class_name",
-  "trainer",
-  "class_date",
-  "status",
-  "naming_series"
+  "naming_series",
+  "date",
+  "time"
  ],
  "fields": [
   {
    "fieldname": "member",
    "fieldtype": "Link",
-   "label": "Member",
+   "label": "Gym Member",
    "options": "Gym Member"
   },
   {
    "fieldname": "class_name",
    "fieldtype": "Select",
-   "label": "Class Name",
-   "options": "Dance\nBoxing\nCardio\nStrength"
-  },
-  {
-   "fieldname": "trainer",
-   "fieldtype": "Link",
-   "label": "Trainer",
-   "options": "Gym Trainer"
-  },
-  {
-   "fieldname": "class_date",
-   "fieldtype": "Datetime",
-   "label": "Class Date"
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Booked\nAttended\nCancelled"
+   "label": "Class Type",
+   "options": "Dance Fitness\nBoxing\nYoga\nZumba"
   },
   {
    "default": "GCB.-.###",
@@ -49,12 +31,22 @@
    "fieldtype": "Select",
    "label": "Naming Series",
    "options": "GCB.-.###\nGCBN.-.###"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Time",
+   "label": "Time"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-08 17:44:46.223486",
+ "modified": "2025-12-09 15:26:42.846850",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Class Booking",

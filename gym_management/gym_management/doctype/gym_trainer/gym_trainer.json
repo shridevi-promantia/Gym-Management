@@ -12,7 +12,8 @@
   "specialization",
   "experience",
   "photo",
-  "naming_series"
+  "naming_series",
+  "user"
  ],
  "fields": [
   {
@@ -52,12 +53,18 @@
    "fieldtype": "Select",
    "label": "Naming Series",
    "options": "GT.-.###\nGTR.-.###"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-08 16:35:18.811917",
+ "modified": "2025-12-10 11:35:35.585485",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Trainer",

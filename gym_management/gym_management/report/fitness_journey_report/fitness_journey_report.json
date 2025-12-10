@@ -1,0 +1,41 @@
+{
+ "add_total_row": 1,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2025-12-09 14:40:03.921179",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "label": "Member",
+   "mandatory": 1,
+   "options": "Gym Member",
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2025-12-09 16:40:50.667637",
+ "modified_by": "Administrator",
+ "module": "Gym Management",
+ "name": "Fitness Journey Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    gym_member,\n    weight,\n    calories,\n    date\nFROM `tabFitness Journey`\nWHERE \n    (%(member)s IS NULL OR %(member)s = '' OR gym_member = %(member)s)\nORDER BY date ASC;\n\n",
+ "ref_doctype": "Fitness Journey",
+ "report_name": "Fitness Journey Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Gym Admin"
+  }
+ ],
+ "timeout": 0
+}

@@ -241,4 +241,22 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
+# doc_events = {
+#     "Gym Trainer Subscription": {
+#         "on_submit": "gym_management.gym_management.doctype.gym_trainer_subscription.gym_trainer_subscription.on_submit"
+#     }
+# }
+# app_include_js = [
+#     "/assets/gym_management/js/trainer_notifications.js"
+# ]
+# scheduler_events = {
+#     "all": [
+#         "gym_management.gym_management.doctype.gym_membership.gym_membership.auto_expire_memberships"
+#     ]
+# }
+  
+scheduler_events = {
+    "daily": [
+        "gym_management.gym_management.doctype.gym_membership.gym_membership.auto_expire_memberships"
+    ]
+}

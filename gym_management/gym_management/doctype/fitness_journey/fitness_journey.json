@@ -1,48 +1,47 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "GMC-.###",
- "creation": "2025-12-08 15:19:38.836555",
+ "creation": "2025-12-09 12:02:06.440587",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "member",
-  "background_image",
-  "qr_code",
-  "gym_membership"
+  "gym_member",
+  "weight",
+  "calories",
+  "date"
  ],
  "fields": [
   {
-   "fieldname": "member",
+   "fieldname": "gym_member",
    "fieldtype": "Link",
-   "label": "Member",
-   "options": "Gym Member"
+   "in_list_view": 1,
+   "label": "Gym Member",
+   "options": "Gym Member",
+   "reqd": 1
   },
   {
-   "fieldname": "background_image",
-   "fieldtype": "Attach Image",
-   "label": "Card Background Image"
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight"
   },
   {
-   "fieldname": "qr_code",
-   "fieldtype": "Attach Image",
-   "label": "QR Code"
+   "fieldname": "calories",
+   "fieldtype": "Int",
+   "label": "Calories"
   },
   {
-   "fieldname": "gym_membership",
-   "fieldtype": "Link",
-   "label": "Gym Membership",
-   "options": "Gym Membership"
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-10 15:59:07.637399",
+ "modified": "2025-12-09 14:47:18.773957",
  "modified_by": "Administrator",
  "module": "Gym Management",
- "name": "Gym Membership Card",
- "naming_rule": "Expression (old style)",
+ "name": "Fitness Journey",
  "owner": "Administrator",
  "permissions": [
   {
