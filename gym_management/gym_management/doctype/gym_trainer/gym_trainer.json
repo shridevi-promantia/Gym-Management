@@ -13,7 +13,7 @@
   "experience",
   "photo",
   "naming_series",
-  "user"
+  "trainer_user"
  ],
  "fields": [
   {
@@ -55,16 +55,16 @@
    "options": "GT.-.###\nGTR.-.###"
   },
   {
-   "fieldname": "user",
+   "fieldname": "trainer_user",
    "fieldtype": "Link",
-   "label": "User",
+   "label": "Trainer User",
    "options": "User"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-10 11:35:35.585485",
+ "modified": "2025-12-15 16:03:47.722292",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Trainer",
@@ -80,6 +80,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Gym Trainer",
    "share": 1,
    "write": 1
   }

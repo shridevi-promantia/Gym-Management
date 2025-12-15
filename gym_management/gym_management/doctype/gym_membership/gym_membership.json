@@ -17,7 +17,10 @@
   "amount",
   "payment_status",
   "notes",
-  "naming_series"
+  "naming_series",
+  "email",
+  "phone",
+  "gender"
  ],
  "fields": [
   {
@@ -42,8 +45,9 @@
   },
   {
    "fieldname": "plan_name",
-   "fieldtype": "Data",
-   "label": "Plan name"
+   "fieldtype": "Select",
+   "label": "Plan name",
+   "options": "Beginner\nMuscle Gain\nFat Loss:\nHybrid\nStrength Builde\nFat Burner\nMuscle Max"
   },
   {
    "fieldname": "start_date",
@@ -92,13 +96,28 @@
    "fieldtype": "Select",
    "label": "Naming Series",
    "options": "GMS.-.###\nGMSP.-.###"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Data",
+   "label": "Gender"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-12-10 12:21:21.656169",
+ "modified": "2025-12-12 11:50:38.769373",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Membership",

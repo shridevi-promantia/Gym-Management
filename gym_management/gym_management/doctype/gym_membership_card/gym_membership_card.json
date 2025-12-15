@@ -7,8 +7,6 @@
  "engine": "InnoDB",
  "field_order": [
   "member",
-  "background_image",
-  "qr_code",
   "gym_membership"
  ],
  "fields": [
@@ -17,16 +15,6 @@
    "fieldtype": "Link",
    "label": "Member",
    "options": "Gym Member"
-  },
-  {
-   "fieldname": "background_image",
-   "fieldtype": "Attach Image",
-   "label": "Card Background Image"
-  },
-  {
-   "fieldname": "qr_code",
-   "fieldtype": "Attach Image",
-   "label": "QR Code"
   },
   {
    "fieldname": "gym_membership",
@@ -38,7 +26,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-10 15:59:07.637399",
+ "modified": "2025-12-11 17:02:43.571665",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Membership Card",

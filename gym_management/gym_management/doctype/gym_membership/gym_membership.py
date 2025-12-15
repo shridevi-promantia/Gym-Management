@@ -1,10 +1,37 @@
 import frappe
 from frappe.model.document import Document
-from frappe.utils import today
+from frappe.utils import today,getdate
+from frappe import _
 
 
 class GymMembership(Document):
-    pass
+    
+    def validate(self):
+        self.validate_dates_and_duration()
+        self.update_status_based_on_date()
+
+    def validate_dates_and_duration(self):
+        if self.start_date and self.end_date:
+            from frappe.utils import date_diff
+            diff = date_diff(self.end_date, self.start_date)
+
+            if diff < 0:
+                frappe.throw(_("End Date cannot be before Start Date"))
+
+            # inclusive
+            self.duration = diff + 1
+        else:
+            self.duration = 0
+            
+    def update_status_based_on_date(self):
+        if self.end_date:
+            if getdate(self.end_date) < getdate(today()):
+                self.status = "Expired"
+            else:
+                # keep Draft as-is, otherwise Active
+                if self.status != "Draft":
+                    self.status = "Active"
+
 
 
 def auto_expire_memberships():
@@ -51,3 +78,4 @@ Gym Management Team
 
     frappe.db.commit()
     frappe.logger().info(f"Total Updated: {len(memberships)}")
+

@@ -1,9 +1,10 @@
-# Copyright (c) 2025, Shridevi Shrishail Madiwalar and contributors
-# For license information, please see license.txt
-
-# import frappe
+import frappe
+import random
 from frappe.model.document import Document
 
-
 class GymLockerBooking(Document):
-	pass
+
+    def before_insert(self):
+        """Assign a random locker before inserting the document."""
+        number = random.randint(1, 100)  # Random number between 1 and 100
+        self.locker_number = str(number)

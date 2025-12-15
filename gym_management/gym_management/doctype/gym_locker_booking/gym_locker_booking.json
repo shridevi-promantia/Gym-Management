@@ -8,7 +8,8 @@
  "field_order": [
   "member",
   "locker_number",
-  "booking_date",
+  "start_date",
+  "end_date",
   "status",
   "naming_series"
  ],
@@ -21,13 +22,8 @@
   },
   {
    "fieldname": "locker_number",
-   "fieldtype": "Int",
+   "fieldtype": "Data",
    "label": "Locker Number"
-  },
-  {
-   "fieldname": "booking_date",
-   "fieldtype": "Date",
-   "label": "Booking Date"
   },
   {
    "fieldname": "status",
@@ -41,12 +37,22 @@
    "fieldtype": "Select",
    "label": "Naming Series",
    "options": "GLB.-.###\nGLBN.-.###"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-08 16:40:41.757606",
+ "modified": "2025-12-12 14:54:46.877926",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Locker Booking",
