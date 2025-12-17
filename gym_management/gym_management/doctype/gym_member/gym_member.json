@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "format:GYM-{full_name}-{####}",
  "creation": "2025-12-08 15:12:49.216767",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -23,7 +23,8 @@
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "Full Name"
+   "label": "Full Name",
+   "unique": 1
   },
   {
    "fieldname": "email",
@@ -32,7 +33,7 @@
   },
   {
    "fieldname": "phone",
-   "fieldtype": "Data",
+   "fieldtype": "Phone",
    "label": "Phone"
   },
   {
@@ -90,11 +91,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-12 11:58:49.497402",
+ "modified": "2025-12-16 18:21:09.534005",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Member",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -114,5 +115,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "full_name"
 }

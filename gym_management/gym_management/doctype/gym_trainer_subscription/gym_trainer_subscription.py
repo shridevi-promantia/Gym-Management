@@ -19,7 +19,6 @@ def after_insert(doc, method):
         event="trainer_subscription_alert",
         message={
             "member": doc.member,
-            "plan": doc.plan_name,
             "start_date": str(doc.subscription_date),
             "status": doc.status
         },
@@ -28,7 +27,6 @@ def after_insert(doc, method):
 
     message = f"""
     Member: {doc.member}<br>
-    Plan: {doc.plan_name}<br>
     Subscription Date: {doc.subscription_date}<br>
     Status: {doc.status}
     """

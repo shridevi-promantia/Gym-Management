@@ -253,15 +253,18 @@ app_include_js = [
 scheduler_events = {
     "daily": [
         "gym_management.gym_management.doctype.gym_membership.gym_membership.auto_expire_memberships"
-    ]
-}
-
-
-scheduler_events = {
+    ],
     "all": [
         "gym_management.gym_management.api.send_weekly_class_summary"
     ]
 }
+
+
+# scheduler_events = {
+#     "all": [
+#         "gym_management.gym_management.api.send_weekly_class_summary"
+#     ]
+# }
 doc_events = {
     "Gym Trainer Subscription": {
         "after_insert": "gym_management.gym_management.doctype.gym_trainer_subscription.gym_trainer_subscription.after_insert"

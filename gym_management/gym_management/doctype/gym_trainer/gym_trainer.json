@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "format:GT-{trainer_name}-{####}",
  "creation": "2025-12-08 15:14:10.503597",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -12,7 +12,6 @@
   "specialization",
   "experience",
   "photo",
-  "naming_series",
   "trainer_user"
  ],
  "fields": [
@@ -28,7 +27,7 @@
   },
   {
    "fieldname": "phone",
-   "fieldtype": "Data",
+   "fieldtype": "Phone",
    "label": "Phone"
   },
   {
@@ -48,13 +47,6 @@
    "label": "Photo"
   },
   {
-   "default": "GT.-.###",
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "GT.-.###\nGTR.-.###"
-  },
-  {
    "fieldname": "trainer_user",
    "fieldtype": "Link",
    "label": "Trainer User",
@@ -64,11 +56,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-15 16:03:47.722292",
+ "modified": "2025-12-16 18:21:42.284208",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Trainer",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -100,5 +92,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "trainer_name"
 }

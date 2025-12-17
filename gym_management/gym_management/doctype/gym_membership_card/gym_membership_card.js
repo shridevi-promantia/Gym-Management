@@ -8,32 +8,19 @@
 // });
 frappe.ui.form.on("Gym Membership Card", {
     refresh(frm) {
-        frappe.call({
-            method: "frappe.client.get_value",
-            args: {
-                doctype: "User",
-                filters: { "name": frappe.session.user },
-                fieldname: ["name"]
-            },
-            callback: function(r) {
-                let current_user = frappe.session.user;
 
-                // Allow only 'Administrator' to print or download
-                if (current_user !== "Administrator") {
-
-                    // Hide print button
-                    frm.page.hide_icon_group();  
-
-                    // Disable Print action dropdown
-                    frm.page.wrapper.find('.menu-btn-group').hide();
-
-                    // Disable print icon
-                    frm.page.wrapper.find('.btn-print-print').hide();
-
-                    // Disable PDF icon
-                    frm.page.wrapper.find('.btn-download-pdf').hide();
+        // Override Print action
+        frm.page.set_primary_action(__('Print'), () => {
+            frappe.call({
+                method: "gym_management.gym_management.doctype.gym_membership_card.gym_membership_card.check_print_permission",
+                args: {
+                    docname: frm.doc.name
+                },
+                callback: function () {
+                    // If permission passes, open print
+                    frappe.ui.get_print_settings(frm.doc.doctype, frm.doc.name);
                 }
-            }
+            });
         });
     }
 });
