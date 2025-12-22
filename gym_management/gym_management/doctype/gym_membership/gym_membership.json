@@ -1,12 +1,11 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": ".GYM.-.{plan_name}.-.###",
  "creation": "2025-12-08 15:13:43.509398",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_9r3v",
   "amended_from",
   "member",
   "plan_name",
@@ -17,13 +16,11 @@
   "amount",
   "payment_status",
   "notes",
-  "naming_series"
+  "email",
+  "phone",
+  "gender"
  ],
  "fields": [
-  {
-   "fieldname": "section_break_9r3v",
-   "fieldtype": "Section Break"
-  },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
@@ -42,8 +39,9 @@
   },
   {
    "fieldname": "plan_name",
-   "fieldtype": "Data",
-   "label": "Plan name"
+   "fieldtype": "Select",
+   "label": "Plan name",
+   "options": "Beginner\nMuscle Gain\nFat Loss\nHybrid\nStrength Builde\nFat Burner\nMuscle Max"
   },
   {
    "fieldname": "start_date",
@@ -87,22 +85,35 @@
    "label": "Notes"
   },
   {
-   "default": "GMS.-.###",
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "GMS.-.###\nGMSP.-.###"
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "Phone"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Data",
+   "label": "Gender"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2025-12-10 12:21:21.656169",
+ "links": [
+  {
+   "link_doctype": "Gym Membership",
+   "link_fieldname": "member"
+  }
+ ],
+ "modified": "2025-12-17 12:58:02.071451",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Membership",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
@@ -123,5 +134,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "member"
 }

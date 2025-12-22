@@ -1,9 +1,7 @@
-# Copyright (c) 2025, Shridevi Shrishail Madiwalar and Contributors
-# See license.txt
-
-# import frappe
 from frappe.tests.utils import FrappeTestCase
-
+import frappe
+from datetime import date
 
 class TestGymMember(FrappeTestCase):
-	pass
+
+    pass

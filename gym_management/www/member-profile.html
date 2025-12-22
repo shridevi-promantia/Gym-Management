@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Profile</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f2f2f2;
+        }
+
+        .profile-box {
+            background: white;
+            padding: 20px;
+            width: 800px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        h2, h3 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+        th { background: #eee; }
+    </style>
+</head>
+
+<body>
+
+<div class="profile-box">
+
+    <h2>Member Profile</h2>
+
+    <div id="basic-info">Loading...</div>
+    <br>
+
+    <h3>Active Membership</h3>
+    <div id="active-plan"></div>
+    <br>
+
+    <h3>Allocated Trainer</h3>
+    <div id="trainer-info"></div>
+    <br>
+
+    <h3>Past Membership Plans</h3>
+    <div id="past-plans"></div>
+
+</div>
+
+<script>
+async function loadProfile() {
+
+    const params = new URLSearchParams(window.location.search);
+    const member = params.get("member_id");   // ✅ FIXED
+
+    if (!member) {
+        document.getElementById("basic-info").innerHTML = "Invalid Member";
+        return;
+    }
+
+    /* ===============================
+       MEMBER BASIC DETAILS
+    =============================== */
+    const memberRes = await fetch(`/api/resource/Gym Member/${member}`);
+    const memberJson = await memberRes.json();
+
+    if (!memberJson.data) {
+        document.getElementById("basic-info").innerHTML = "Invalid Member";
+        return;
+    }
+
+    const memberDoc = memberJson.data;
+
+    document.getElementById("basic-info").innerHTML = `
+        <p><b>Name:</b> ${memberDoc.full_name}</p>
+        <p><b>Email:</b> ${memberDoc.email || "-"}</p>
+        <p><b>Phone:</b> ${memberDoc.phone || "-"}</p>
+        <p><b>Gender:</b> ${memberDoc.gender || "-"}</p>
+    `;
+
+    /* ===============================
+   ACTIVE MEMBERSHIP (FIXED)
+=============================== */
+const activeRes = await fetch(
+    `/api/resource/Gym Membership` +
+    `?filters=[["member","=","${member}"],["status","=","Active"]]` +
+    `&fields=["name","plan_name","start_date","end_date"]`
+);
+
+const activeJson = await activeRes.json();
+const activeData = activeJson.data;
+
+if (activeData && activeData.length) {
+
+    const m = activeData[0];
+
+    const today = new Date();
+    const end = new Date(m.end_date);
+    const remaining = Math.max(
+        Math.ceil((end - today) / (1000 * 60 * 60 * 24)),
+        0
+    );
+
+    document.getElementById("active-plan").innerHTML = `
+        <p><b>Plan:</b> ${m.plan_name}</p>
+        <p><b>Start Date:</b> ${m.start_date}</p>
+        <p><b>Expiry Date:</b> ${m.end_date}</p>
+        <p><b>Remaining Days:</b> ${remaining}</p>
+    `;
+} else {
+    document.getElementById("active-plan").innerHTML = "No active membership.";
+}
+
+
+    /* ===============================
+       TRAINER DETAILS
+    =============================== */
+    if (memberDoc.trainer) {
+
+        const trainerRes = await fetch(
+            `/api/resource/Gym Trainer/${memberDoc.trainer}`
+        );
+        const trainer = (await trainerRes.json()).data;
+
+        document.getElementById("trainer-info").innerHTML = `
+            <p><b>Name:</b> ${trainer.trainer_name}</p>
+            <p><b>Specialization:</b> ${trainer.specialization}</p>
+            <p><b>Experience:</b> ${trainer.experience} years</p>
+            <p><b>Phone:</b> ${trainer.phone || "-"}</p>
+            <p><b>Email:</b> ${trainer.email || "-"}</p>
+            ${trainer.photo ? `<img src="${trainer.photo}" width="120">` : ""}
+        `;
+    } else {
+        document.getElementById("trainer-info").innerHTML = "No trainer assigned.";
+    }
+
+        /* ===============================
+    PAST MEMBERSHIPS (FIXED)
+    =============================== */
+    const pastRes = await fetch(
+        `/api/resource/Gym Membership` +
+        `?filters=[["member","=","${member}"],["status","=","Expired"]]` +
+        `&fields=["name","plan_name","start_date","end_date"]`
+    );
+
+    const pastJson = await pastRes.json();
+    const pastData = pastJson.data;
+
+    if (pastData && pastData.length) {
+
+        let html = `
+        <table>
+            <tr>
+                <th>Plan</th>
+                <th>Start Date</th>
+                <th>Expiry Date</th>
+            </tr>`;
+
+        pastData.forEach(p => {
+            html += `
+            <tr>
+                <td>${p.plan_name}</td>
+                <td>${p.start_date}</td>
+                <td>${p.end_date}</td>
+            </tr>`;
+        });
+
+        html += `</table>`;
+        document.getElementById("past-plans").innerHTML = html;
+
+    } else {
+        document.getElementById("past-plans").innerHTML = "No past plans.";
+    }
+}
+loadProfile();
+</script>
+
+</body>
+</html>

@@ -246,17 +246,27 @@ app_license = "mit"
 #         "on_submit": "gym_management.gym_management.doctype.gym_trainer_subscription.gym_trainer_subscription.on_submit"
 #     }
 # }
-# app_include_js = [
-#     "/assets/gym_management/js/trainer_notifications.js"
-# ]
-# scheduler_events = {
-#     "all": [
-#         "gym_management.gym_management.doctype.gym_membership.gym_membership.auto_expire_memberships"
-#     ]
-# }
-  
+app_include_js = [
+    "/assets/gym_management/js/trainer_notifications.js"
+]
+
 scheduler_events = {
     "daily": [
         "gym_management.gym_management.doctype.gym_membership.gym_membership.auto_expire_memberships"
+    ],
+    "all": [
+        "gym_management.gym_management.api.send_weekly_class_summary"
     ]
+}
+
+
+# scheduler_events = {
+#     "all": [
+#         "gym_management.gym_management.api.send_weekly_class_summary"
+#     ]
+# }
+doc_events = {
+    "Gym Trainer Subscription": {
+        "after_insert": "gym_management.gym_management.doctype.gym_trainer_subscription.gym_trainer_subscription.after_insert"
+    }
 }

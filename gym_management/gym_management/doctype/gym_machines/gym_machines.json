@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:machine_name",
  "creation": "2025-12-09 11:18:38.721093",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -9,13 +10,15 @@
   "machine_type",
   "availability",
   "description",
-  "status"
+  "status",
+  "naming_series"
  ],
  "fields": [
   {
    "fieldname": "machine_name",
    "fieldtype": "Data",
-   "label": "Machine Name"
+   "label": "Machine Name",
+   "unique": 1
   },
   {
    "fieldname": "machine_type",
@@ -39,15 +42,22 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Working\nNot Working"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series",
+   "options": "GMS.-.###"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-09 11:54:21.504310",
+ "modified": "2025-12-12 12:21:21.176976",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Machines",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -65,7 +75,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "machine_name"
 }

@@ -1,10 +1,5 @@
-# Copyright (c) 2025, Shridevi Shrishail Madiwalar and contributors
-# For license information, please see license.txt
-
-# import frappe
-
-
 import frappe
+
 
 def execute(filters=None):
     filters = filters or {}
@@ -15,6 +10,13 @@ def execute(filters=None):
             "fieldname": "date",
             "fieldtype": "Date",
             "width": 120,
+        },
+        {
+            "label": "Gym Member",
+            "fieldname": "gym_member",
+            "fieldtype": "Link",
+            "options": "Gym Member",
+            "width": 180,
         },
         {
             "label": "Weight (kg)",
@@ -28,6 +30,13 @@ def execute(filters=None):
             "fieldtype": "Int",
             "width": 150,
         },
+        {
+            "label": "Workout Plan",
+            "fieldname": "workouts",
+            "fieldtype": "Link",
+            "options": "Gym Workout Plan",
+            "width": 180,
+        },
     ]
 
     query_filters = {}
@@ -36,36 +45,46 @@ def execute(filters=None):
 
     records = frappe.get_all(
         "Fitness Journey",
-        fields=["date", "weight", "calories"],
+        fields=[
+            "date",
+            "gym_member",
+            "weight",
+            "calories",
+            "workouts",
+        ],
         filters=query_filters,
-        order_by="date asc"
+        order_by="date asc",
     )
 
     data = []
-    weight_data = []
-    calories_data = []
+    labels = []
+    weight_values = []
+    calorie_values = []
 
     for row in records:
         data.append(row)
-        if row.date:
-            weight_data.append([row.date, row.weight])
-            calories_data.append([row.date, row.calories])
 
+        label = row.get("date") or "N/A"
+        labels.append(label)
+        weight_values.append(row.get("weight") or 0)
+        calorie_values.append(row.get("calories") or 0)
+
+    # ✅ BAR CHART (WORKS FOR 1 OR MANY RECORDS)
     chart = {
         "data": {
-            "labels": [d[0] for d in weight_data],
+            "labels": labels,
             "datasets": [
                 {
                     "name": "Weight Progress",
-                    "values": [d[1] for d in weight_data]
+                    "values": weight_values,
                 },
                 {
                     "name": "Calories Burned",
-                    "values": [d[1] for d in calories_data]
-                }
-            ]
+                    "values": calorie_values,
+                },
+            ],
         },
-        "type": "line"
+        "type": "bar",
     }
 
     return columns, data, None, chart

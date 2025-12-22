@@ -1,18 +1,16 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "GTS.-.{trainer}.###",
  "creation": "2025-12-08 15:14:43.122355",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "member",
   "trainer",
-  "plan_name",
   "subscription_date",
-  "amount",
   "status",
-  "naming_series"
+  "trainer_user"
  ],
  "fields": [
   {
@@ -28,19 +26,9 @@
    "options": "Gym Trainer"
   },
   {
-   "fieldname": "plan_name",
-   "fieldtype": "Data",
-   "label": "Plan Name"
-  },
-  {
    "fieldname": "subscription_date",
    "fieldtype": "Date",
    "label": "Subscription Date"
-  },
-  {
-   "fieldname": "amount",
-   "fieldtype": "Currency",
-   "label": "Amount"
   },
   {
    "fieldname": "status",
@@ -49,21 +37,21 @@
    "options": "Active\nCompleted\nCancelled"
   },
   {
-   "default": "GTS.-.###",
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "label": "Naming Series",
-   "options": "GTS.-.###\nGTSN.-.###"
+   "fetch_from": "trainer.trainer_user",
+   "fieldname": "trainer_user",
+   "fieldtype": "Link",
+   "label": "Trainer User",
+   "options": "User"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-12-08 16:37:30.786001",
+ "modified": "2025-12-16 12:19:26.997131",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Trainer Subscription",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

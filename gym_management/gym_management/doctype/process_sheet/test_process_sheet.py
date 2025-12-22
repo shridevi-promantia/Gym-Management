@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestPlanningSheet(FrappeTestCase):
+class TestProcessSheet(FrappeTestCase):
 	pass

@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class Revenue(Document):
+class ProcessSheet(Document):
 	pass

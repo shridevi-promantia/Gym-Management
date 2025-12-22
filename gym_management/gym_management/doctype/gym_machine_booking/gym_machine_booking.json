@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2025-12-09 11:55:10.158277",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -9,8 +10,8 @@
   "gym_machine",
   "date",
   "time_slot",
-  "duration",
-  "amended_from"
+  "amended_from",
+  "naming_series"
  ],
  "fields": [
   {
@@ -37,11 +38,6 @@
    "options": "Morning Slot\nMid-Morning Slot\nAfternoon Slot\nEvening Slot\nWeekend Slots"
   },
   {
-   "fieldname": "duration",
-   "fieldtype": "Duration",
-   "label": "Duration"
-  },
-  {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
@@ -50,16 +46,23 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "GMB.-.###"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-12-09 12:01:08.075662",
+ "modified": "2025-12-12 12:12:02.700635",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Machine Booking",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
